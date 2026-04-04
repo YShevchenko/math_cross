@@ -55,7 +55,9 @@ class _MathCrossAppState extends ConsumerState<MathCrossApp> {
     return MaterialApp(
       title: 'Math Cross',
       debugShowCheckedModeBanner: false,
-      theme: AppTheme.dark,
+      theme: AppTheme.light,
+      darkTheme: AppTheme.dark,
+      themeMode: ThemeMode.system,
       locale: Locale(settings.locale),
       supportedLocales: AppLocalizations.supportedLocales,
       localizationsDelegates: const [

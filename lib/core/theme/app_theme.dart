@@ -3,6 +3,24 @@ import 'package:google_fonts/google_fonts.dart';
 import 'app_colors.dart';
 
 abstract final class AppTheme {
+  static ThemeData get light {
+    GoogleFonts.config.allowRuntimeFetching = false;
+    return ThemeData(
+      brightness: Brightness.light,
+      useMaterial3: true,
+      colorScheme: ColorScheme.light(
+        primary: Colors.blue.shade700,
+        secondary: Colors.indigo.shade700,
+      ),
+      textTheme: _textTheme,
+      appBarTheme: const AppBarTheme(
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+        centerTitle: false,
+      ),
+    );
+  }
+
   static ThemeData get dark {
     GoogleFonts.config.allowRuntimeFetching = false;
     return ThemeData(

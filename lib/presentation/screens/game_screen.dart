@@ -29,6 +29,7 @@ class _GameScreenState extends ConsumerState<GameScreen> {
   int? _selectedCol;
   Timer? _timer;
   bool _showValidation = false;
+  int? _cachedHighlightedEquation;
 
   @override
   void initState() {
@@ -60,6 +61,12 @@ class _GameScreenState extends ConsumerState<GameScreen> {
     setState(() {
       _selectedRow = row;
       _selectedCol = col;
+      // Recompute highlighted equation when selection changes
+      final game = ref.read(gameStateProvider);
+      final grid = game.grid;
+      if (grid != null) {
+        _cachedHighlightedEquation = _computeHighlightedEquation(grid, row, col);
+      }
     });
   }
 
@@ -231,7 +238,7 @@ class _GameScreenState extends ConsumerState<GameScreen> {
             // Equation hints (clues)
             EquationHints(
               equations: grid.equations,
-              highlightedEquation: _getHighlightedEquation(grid),
+              highlightedEquation: _cachedHighlightedEquation,
             ),
             const SizedBox(height: 8),
 
@@ -378,16 +385,14 @@ class _GameScreenState extends ConsumerState<GameScreen> {
     );
   }
 
-  int? _getHighlightedEquation(MathGrid grid) {
-    if (_selectedRow == null || _selectedCol == null) return null;
+  int? _computeHighlightedEquation(MathGrid grid, int? row, int? col) {
+    if (row == null || col == null) return null;
     // Find equations that contain the selected cell
     for (final eq in grid.equations) {
-      if (eq.direction == EquationDirection.across &&
-          _selectedRow == eq.startRow) {
+      if (eq.direction == EquationDirection.across && row == eq.startRow) {
         return eq.number;
       }
-      if (eq.direction == EquationDirection.down &&
-          _selectedCol == eq.startCol) {
+      if (eq.direction == EquationDirection.down && col == eq.startCol) {
         return eq.number;
       }
     }
