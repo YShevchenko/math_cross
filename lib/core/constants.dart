@@ -7,16 +7,16 @@ abstract final class AppConstants {
 
   // -- Difficulty thresholds --
 
-  /// Levels 1-10: addition only, 2 equation rows, numbers 1-9.
-  static const int additionOnlyMaxLevel = 10;
+  /// Levels 1-25: addition only, 2 equation rows, numbers 1-9.
+  static const int additionOnlyMaxLevel = 25;
 
-  /// Levels 11-20: addition + subtraction, 3 equation rows.
-  static const int addSubMaxLevel = 20;
+  /// Levels 26-50: addition + subtraction, 2 equation rows, numbers 1-15.
+  static const int addSubMaxLevel = 50;
 
-  /// Levels 21-35: add + sub + multiplication, 3 equation rows.
-  static const int addSubMulMaxLevel = 35;
+  /// Levels 51-75: add + sub + multiplication, 3 equation rows, numbers 1-12.
+  static const int addSubMulMaxLevel = 75;
 
-  /// Levels 36+: all operations including division.
+  /// Levels 76-100: all operations including division, 3 equation rows, numbers 1-20.
 
   // -- Scoring --
 

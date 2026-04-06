@@ -71,14 +71,6 @@ class _ClueColumn extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(
-          title,
-          style: Theme.of(context).textTheme.labelSmall?.copyWith(
-                letterSpacing: 3,
-                color: AppColors.onSurfaceVariant,
-              ),
-        ),
-        const SizedBox(height: 4),
         ...equations.map((eq) {
           final isHighlighted = highlightedEquation == eq.number;
           return Padding(

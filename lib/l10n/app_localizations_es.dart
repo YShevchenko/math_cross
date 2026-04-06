@@ -46,13 +46,13 @@ class AppLocalizationsEs extends AppLocalizations {
   String get complete => 'Completo';
 
   @override
-  String get levelComplete => 'Nivel completado!';
+  String get levelComplete => '¡Nivel completado!';
 
   @override
   String get nextLevel => 'Siguiente nivel';
 
   @override
-  String get backToMenu => 'Volver al menu';
+  String get backToMenu => 'Volver al menú';
 
   @override
   String get settings => 'Ajustes';
@@ -64,7 +64,7 @@ class AppLocalizationsEs extends AppLocalizations {
   String get soundEffects => 'Efectos de sonido';
 
   @override
-  String get hapticFeedback => 'Vibracion';
+  String get hapticFeedback => 'Vibración';
 
   @override
   String get language => 'Idioma';
@@ -92,19 +92,19 @@ class AppLocalizationsEs extends AppLocalizations {
   String get restore => 'Restaurar compras';
 
   @override
-  String get back => 'Atras';
+  String get back => 'Atrás';
 
   @override
   String get puzzlesCompleted => 'Puzzles completados';
 
   @override
-  String get highestLevel => 'Nivel mas alto';
+  String get highestLevel => 'Nivel más alto';
 
   @override
-  String get totalScore => 'Puntuacion total';
+  String get totalScore => 'Puntuación total';
 
   @override
-  String get bestScore => 'Mejor puntuacion';
+  String get bestScore => 'Mejor puntuación';
 
   @override
   String get hintsUsed => 'Pistas usadas';
@@ -119,7 +119,7 @@ class AppLocalizationsEs extends AppLocalizations {
   String get confirm => 'Confirmar';
 
   @override
-  String get stats => 'Estadisticas';
+  String get stats => 'Estadísticas';
 
   @override
   String get watchAdForHints => 'Ver anuncio por pistas';
@@ -128,17 +128,17 @@ class AppLocalizationsEs extends AppLocalizations {
   String get noHintsAvailable => 'No hay pistas disponibles';
 
   @override
-  String get hintRevealed => 'Pista revelada!';
+  String get hintRevealed => '¡Pista revelada!';
 
   @override
-  String get tapCellToFill => 'Toca una celda, luego introduce un numero';
+  String get tapCellToFill => 'Toca una celda, luego introduce un número';
 
   @override
-  String get wellDone => 'Bien hecho!';
+  String get wellDone => '¡Bien hecho!';
 
   @override
   String get timeBonus => 'Bonus de tiempo';
 
   @override
-  String get newBest => 'Nuevo record!';
+  String get newBest => '¡Nuevo récord!';
 }

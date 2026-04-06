@@ -36,40 +36,54 @@ class DifficultyService {
 
   DifficultyConfig configForLevel(int level) {
     if (level <= AppConstants.additionOnlyMaxLevel) {
+      // Levels 1-25: Addition only
+      // Gradually increase operand range and blanks
+      final maxOp = level <= 10 ? 9 : (level <= 18 ? 12 : 15);
+      final blanks = level <= 12 ? 1 : 2;
       return DifficultyConfig(
         operators: ['+'],
         equationRows: 2,
         equationCols: 2,
         minOperand: 1,
-        maxOperand: 9,
-        blanksPerEquation: 1,
+        maxOperand: maxOp,
+        blanksPerEquation: blanks,
       );
     } else if (level <= AppConstants.addSubMaxLevel) {
+      // Levels 26-50: Addition + Subtraction
+      final maxOp = level <= 35 ? 12 : (level <= 42 ? 15 : 20);
+      final blanks = level <= 35 ? 1 : 2;
       return DifficultyConfig(
         operators: ['+', '-'],
         equationRows: 2,
         equationCols: 2,
         minOperand: 1,
-        maxOperand: 15,
-        blanksPerEquation: 1,
+        maxOperand: maxOp,
+        blanksPerEquation: blanks,
       );
     } else if (level <= AppConstants.addSubMulMaxLevel) {
+      // Levels 51-75: Addition + Subtraction + Multiplication
+      final maxOp = level <= 60 ? 9 : (level <= 68 ? 12 : 15);
+      final blanks = level <= 58 ? 1 : 2;
+      final rows = level <= 60 ? 2 : 3;
       return DifficultyConfig(
         operators: ['+', '-', 'x'],
-        equationRows: 3,
-        equationCols: 3,
+        equationRows: rows,
+        equationCols: rows,
         minOperand: 1,
-        maxOperand: 12,
-        blanksPerEquation: 2,
+        maxOperand: maxOp,
+        blanksPerEquation: blanks,
       );
     } else {
+      // Levels 76-100: All operations including division
+      final maxOp = level <= 85 ? 12 : (level <= 93 ? 15 : 20);
+      final blanks = level <= 82 ? 1 : 2;
       return DifficultyConfig(
         operators: ['+', '-', 'x', '/'],
         equationRows: 3,
         equationCols: 3,
         minOperand: 1,
-        maxOperand: 15,
-        blanksPerEquation: 2,
+        maxOperand: maxOp,
+        blanksPerEquation: blanks,
       );
     }
   }

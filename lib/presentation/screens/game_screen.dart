@@ -78,8 +78,18 @@ class _GameScreenState extends ConsumerState<GameScreen> {
       HapticFeedback.lightImpact();
     }
 
+    // Support multi-digit input: append digit to existing value
+    final currentGame = ref.read(gameStateProvider);
+    final cell = currentGame.grid?.cellAt(_selectedRow!, _selectedCol!);
+    int newValue;
+    if (cell != null && cell.userInput != null) {
+      newValue = cell.userInput! * 10 + number;
+    } else {
+      newValue = number;
+    }
+
     ref.read(gameStateProvider.notifier).placeNumber(
-      _selectedRow!, _selectedCol!, number,
+      _selectedRow!, _selectedCol!, newValue,
     );
 
     // Check if puzzle is complete after placing
@@ -97,9 +107,19 @@ class _GameScreenState extends ConsumerState<GameScreen> {
       HapticFeedback.lightImpact();
     }
 
-    ref.read(gameStateProvider.notifier).clearCell(
-      _selectedRow!, _selectedCol!,
-    );
+    // For multi-digit: remove last digit first, then clear entirely
+    final game = ref.read(gameStateProvider);
+    final cell = game.grid?.cellAt(_selectedRow!, _selectedCol!);
+    if (cell != null && cell.userInput != null && cell.userInput! >= 10) {
+      // Remove last digit
+      ref.read(gameStateProvider.notifier).placeNumber(
+        _selectedRow!, _selectedCol!, cell.userInput! ~/ 10,
+      );
+    } else {
+      ref.read(gameStateProvider.notifier).clearCell(
+        _selectedRow!, _selectedCol!,
+      );
+    }
   }
 
   void _useHint() {
@@ -127,25 +147,11 @@ class _GameScreenState extends ConsumerState<GameScreen> {
       builder: (ctx) => AlertDialog(
         backgroundColor: AppColors.surfaceContainer,
         title: Text(l10n.noHintsAvailable),
-        content: Text(l10n.watchAdForHints),
+        content: Text(l10n.noHintsAvailable),
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(ctx),
             child: Text(l10n.cancel),
-          ),
-          TextButton(
-            onPressed: () async {
-              Navigator.pop(ctx);
-              final adService = ref.read(adServiceProvider);
-              final rewarded = await adService.showRewardedAd();
-              if (rewarded) {
-                ref.read(progressProvider.notifier)
-                    .addHints(AppConstants.hintsPerRewardedAd);
-                ref.read(gameStateProvider.notifier)
-                    .addHints(AppConstants.hintsPerRewardedAd);
-              }
-            },
-            child: Text(l10n.watchAdForHints),
           ),
         ],
       ),
@@ -171,9 +177,6 @@ class _GameScreenState extends ConsumerState<GameScreen> {
         .addHints(AppConstants.hintsPerLevelComplete);
     ref.read(gameStateProvider.notifier)
         .addHints(AppConstants.hintsPerLevelComplete);
-
-    // Show ad periodically
-    ref.read(adServiceProvider).showInterstitialIfReady(game.level);
 
     // Show victory modal
     Future.delayed(const Duration(milliseconds: 600), () {

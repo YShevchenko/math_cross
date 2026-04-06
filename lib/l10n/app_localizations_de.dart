@@ -49,10 +49,10 @@ class AppLocalizationsDe extends AppLocalizations {
   String get levelComplete => 'Level geschafft!';
 
   @override
-  String get nextLevel => 'Naechstes Level';
+  String get nextLevel => 'Nächstes Level';
 
   @override
-  String get backToMenu => 'Zurueck zum Menue';
+  String get backToMenu => 'Zurück zum Menü';
 
   @override
   String get settings => 'Einstellungen';
@@ -73,7 +73,7 @@ class AppLocalizationsDe extends AppLocalizations {
   String get preferences => 'Einstellungen';
 
   @override
-  String get purchases => 'Kaeufe';
+  String get purchases => 'Käufe';
 
   @override
   String get store => 'Shop';
@@ -89,16 +89,16 @@ class AppLocalizationsDe extends AppLocalizations {
       'Alle Werbung dauerhaft entfernen.';
 
   @override
-  String get restore => 'Kaeufe wiederherstellen';
+  String get restore => 'Käufe wiederherstellen';
 
   @override
-  String get back => 'Zurueck';
+  String get back => 'Zurück';
 
   @override
-  String get puzzlesCompleted => 'Raetsel geloest';
+  String get puzzlesCompleted => 'Rätsel gelöst';
 
   @override
-  String get highestLevel => 'Hoechstes Level';
+  String get highestLevel => 'Höchstes Level';
 
   @override
   String get totalScore => 'Gesamtpunkte';
@@ -116,16 +116,16 @@ class AppLocalizationsDe extends AppLocalizations {
   String get cancel => 'Abbrechen';
 
   @override
-  String get confirm => 'Bestaetigen';
+  String get confirm => 'Bestätigen';
 
   @override
   String get stats => 'Statistik';
 
   @override
-  String get watchAdForHints => 'Werbung fuer Hinweise';
+  String get watchAdForHints => 'Werbung für Hinweise';
 
   @override
-  String get noHintsAvailable => 'Keine Hinweise verfuegbar';
+  String get noHintsAvailable => 'Keine Hinweise verfügbar';
 
   @override
   String get hintRevealed => 'Hinweis aufgedeckt!';

@@ -1,4 +1,4 @@
-package top.heldig.math_cross
+package com.heldiglab.mathcross
 
 import io.flutter.embedding.android.FlutterActivity
 
